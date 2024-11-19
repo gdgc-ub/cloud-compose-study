@@ -1,0 +1,11 @@
+.env
+node_modules
+static/*
+!static/.gitkeep
+!static/assets/storage/.gitkeep
+.VSCodeCounter
+tmp
+bin
+docker-ready-compose.yml
+Dockerfile.multi
+TODO.txt

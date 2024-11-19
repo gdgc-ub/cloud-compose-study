@@ -1,0 +1,11 @@
+{{ define "Alert" }}
+{{ if ne .ResQuery "" }}
+<div class='{{ if contains "success" .ResQuery }} bg-blue-500 {{ else }} bg-red-500 {{ end }} rounded-lg w-full text-white mb-5 py-5 px-10 text-lg font-semibold flex justify-between' id="successMessage">
+    <h1>{{ .ResQuery }}</h1>
+    <button onclick="document.getElementById('successMessage').style.display='none'" 
+    class="text-white">
+        X
+    </button>
+</div>
+{{ end }}
+{{ end }}

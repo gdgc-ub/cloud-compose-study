@@ -1,0 +1,31 @@
+{{ define "ListBlogs" }}
+<div class="p-20">
+    <h1 class="text-red-500 font-semibold text-4xl text-center mb-5">List Blogs</h1>
+    {{ template "Alert" dict "ResQuery" .ResQuery }}
+    {{ if .Blogs }}
+        <div class="border border-yellow-500 grid grid-cols-3 p-5 gap-x-5 gap-y-5 mb-20 rounded-lg">
+            {{ range .Blogs }}
+            <div class="border border-blue-500 p-5 rounded-lg group hover:bg-blue-500 duration-300 ease-in-out hover:text-white cursor-pointer" onclick="location.href='/blogs/{{ .ID }}'">
+                
+                <div class="mb-5">
+                    <img src="{{ .ImageLink }}" alt="" class="">
+                </div>
+                <h1 class="text-xl font-semibold">{{ .Title }}</h1>
+                <p class="break-all">
+                    {{ .Content }}
+                </p>
+            </div>
+            {{ end }}
+        </div>
+    {{ else }}
+        <div class="border border-yellow-500 p-5 h-[200px] mb-20 rounded-lg flex justify-center self-center items-center">
+            <div class="text-center">
+                <h1>Blogs is still empty 😔</h1>
+                <p>Try to <a href="/blogs/create" class="text-green-500">make one</a></p>
+            </div>
+        
+        </div>
+    {{ end }}    
+</div>
+
+{{ end }}

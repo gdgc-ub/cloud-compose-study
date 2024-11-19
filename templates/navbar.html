@@ -1,0 +1,19 @@
+{{ define "Navbar" }}
+<nav class=" w-full px-5 py-5 flex items-center text-blue-500">
+    <h1 class="text-xl font-bold group bg-white duration-300">
+        <a href="/">
+            <span class="text-blue-400 duration-300">HTMX</span> <span class="text-red-500 duration-300">Go</span> <span class="text-yellow-300 duration-300">Blog</span> <span class="text-green-500 duration-300">App</span>
+        </a>
+        
+    </h1>
+    <ul class="pl-5 font-semibold flex gap-x-5">
+        {{ range .Navs }}
+        <li class="hover:bg-white hover:text-red-500 ease-in-out duration-300 rounded-lg px-2 py-1 text-green-500">
+            <a href="{{ .path }}">
+                {{ .title }}
+            </a>
+        </li>
+        {{ end }}
+    </ul>
+</nav>
+{{ end }}

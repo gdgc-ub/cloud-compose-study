@@ -1,0 +1,25 @@
+{{ define "CreateBlog" }}
+<div class="p-20 h-screen">
+    <div class="border border-green-500 px-10 py-10 rounded-lg">
+        <h1 class="text-yellow-400 font-semibold text-3xl">Create your blog!</h1>
+        <div class="h-[1px] bg-red-500 mb-5"></div>
+        <form action="" hx-post="/blogs" hx-target="body" hx-swap="outerHMTL" hx-push-url="true" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title">Title</label>
+                <input type="text" name="title" class="block border border-blue-500 rounded-md px-1 py-2 w-full">
+            </div>
+            <div class="mb-3">
+                <label for="image">Image</label>
+                <input type="file" name="image_file" class="block border border-blue-500 w-full cursor-pointer file:px-2 file:py-2 file:bg-green-500 file:text-white file:border-none rounded-md">
+            </div>
+            <div class="mb-3">
+                <label for="content">Content</label>
+                <textarea name="content" id="content" class="resize-none block border border-blue-500 rounded-md px-1 py-2 w-full" rows="10" cols="50"></textarea>
+            </div>
+            <div>
+                <button class="bg-blue-500 text-white px-2 py-2 rounded-md w-full border border-blue-500 hover:bg-white duration-300 ease-in-out hover:text-blue-500">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+{{ end }}

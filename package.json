@@ -1,0 +1,27 @@
+{
+  "name": "go-blog",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build && tailwindcss -i ./resources/style.css -o ./static/styles/style.css",
+    "dev": "concurrently \"vite build --watch\" \"tailwindcss -i ./resources/style.css -o ./static/styles/style.css --watch\"",
+    "tailwind:dev": "tailwindcss -i ./resources/style.css -o ./static/styles/style.css --watch",
+    "vite:dev": "vite build --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  },
+  "dependencies": {
+    "htmx.org": "^1.9.12",
+    "iconify-icon": "^2.1.0"
+  }
+}
