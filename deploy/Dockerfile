@@ -1,3 +1,4 @@
+## Change this Dockerfile so the image size wont be huge
 FROM golang:alpine3.20 
 
 RUN apk update && apk add --no-cache git nodejs npm curl ca-certificates tzdata

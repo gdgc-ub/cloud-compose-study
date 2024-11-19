@@ -6,8 +6,8 @@ import (
 )
 
 func main() {
-	pgsqldb := database.NewPgsqlConn()
-	httpSrv := server.NewHTTPServer(pgsqldb)
+	mysqldb := database.NewMySQLConn()
+	httpSrv := server.NewHTTPServer(mysqldb)
 
 	httpSrv.MountMiddlewares()
 	httpSrv.MountControllers()

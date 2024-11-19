@@ -63,7 +63,7 @@ func (r *pgsqlBlogRepository) FetchBlogByID(id int) (domain.Blog, error) {
 
 	query = sq.Select("*").From(TABLE_NAME).Where("id = ?", id)
 
-	sql, args, err = query.PlaceholderFormat(sq.Dollar).ToSql()
+	sql, args, err = query.PlaceholderFormat(sq.Question).ToSql()
 
 	if err != nil {
 		log.Printf("[BLOG REPOSITORY][FetchBlogsByID] ERR: %v\n", err.Error())
@@ -95,7 +95,7 @@ func (r *pgsqlBlogRepository) InsertBlog(blog *domain.Blog) error {
 		Columns("title", "image_link", "content"). 
 		Values(blog.Title, blog.ImageLink, blog.Content)
 
-	sql, args, err = query.PlaceholderFormat(sq.Dollar).ToSql()
+	sql, args, err = query.ToSql()
 
 	if err != nil {
 		log.Printf("[BLOG REPOSITORY][InsertBlog] ERR: %v\n", err.Error())
@@ -125,7 +125,7 @@ func (r *pgsqlBlogRepository) UpdateBlog(blog *domain.Blog) error {
 		Set("content", blog.Content). 
 		Where("id = ?", blog.ID)
 
-	sql, args, err = query.PlaceholderFormat(sq.Dollar).ToSql()
+	sql, args, err = query.PlaceholderFormat(sq.Question).ToSql()
 
 	if err != nil {
 		log.Printf("[BLOG REPOSITORY][UpdateBlog] ERR: %v\n", err.Error())
@@ -158,7 +158,7 @@ func (r *pgsqlBlogRepository) DeleteBlog(id int) error {
 		Delete(TABLE_NAME). 
 		Where("id = ?", id)
 
-	sql, args, err = query.PlaceholderFormat(sq.Dollar).ToSql()
+	sql, args, err = query.PlaceholderFormat(sq.Question).ToSql()
 
 	if err != nil {
 		log.Printf("[BLOG REPOSITORY][DeleteBlog] ERR: %v\n", err.Error())

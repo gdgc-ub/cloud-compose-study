@@ -1,12 +1,21 @@
-# 📰 Blog App with HTMX and Golang
-
-## ⚡ Getting Started
-
-This project use [air](https://github.com/air-verse/air) and [make](https://www.gnu.org/software/make/) for ease of development, [go-migrate](https://github.com/golang-migrate/migrate) for creating database migrations and [npm](https://www.npmjs.com/) to build htmx and tailwindcss. Make sure you already installed the required tools to develop this project
+# Cloud Docker Challenge
 
 ## 🚀 Deployment
 
-For learning purpose, write and complete the [Docker Compose File](./docker-compose.yml) to setup a Golang Web Application with PostgreSQL Database. Use the [Dockerfile](./Dockerfile) as the image for the Golang Web App. This setup will help you understand the concept of Docker Compose, allowing you to manage multiple containers in a single command.
+As a cloud developer, you must configure the Docker Image to be as small as possible since storage is not cheap. Currently the docker image that got built from [Dockerfile](./deploy/Dockerfile) will result in 800MB! Can you make it as small as possible? Also help us create the [Docker Compose](./docker-compose.yml) configuration. Our application consist of 2 services, application and database. 
+
+## ✨ What we rate
+
+1. Small Image Size
+2. Compose Exploration
+3. Configuration Running Successfully   
+
+## 📤 Submission
+
+1. Clone this repository
+2. Make changes and hosted the source code in your github repository
+3. Create a video about running your docker compose configuration
+4. Upload the video link and github repository link to the submission form
 
 ## 🛠️ Techstacks
 

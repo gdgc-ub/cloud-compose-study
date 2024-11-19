@@ -4,30 +4,31 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jmoiron/sqlx"
-	_ "github.com/lib/pq"
-	"github.com/golang-migrate/migrate/v4"
-	"github.com/golang-migrate/migrate/v4/database/postgres"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
-
 	"github.com/devanfer02/go-blog/infra/env"
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
+	"github.com/golang-migrate/migrate/v4"
+	"github.com/golang-migrate/migrate/v4/database/mysql"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
 )
 
-func NewPgsqlConn() *sqlx.DB {
-	dbx, err := sqlx.Connect("postgres", fmt.Sprintf(
-		"user=%s password=%s host=%s dbname=%s sslmode=disable port=%s",
+func NewMySQLConn() *sqlx.DB{
+	dsn := fmt.Sprintf(
+		"%s:%s@tcp(%s:%s)/%s?parseTime=true",
 		env.AppEnv.DBUser,
 		env.AppEnv.DBPass,
 		env.AppEnv.DBHost,
-		env.AppEnv.DBName,
 		env.AppEnv.DBPort,
-	))
+		env.AppEnv.DBName,
+	)
+
+	db, err := sqlx.Connect("mysql", dsn)
 
 	if err != nil {
 		log.Fatal("ERR: " + err.Error())
 	}
 
-	driver, err := postgres.WithInstance(dbx.DB, &postgres.Config{})
+	driver, err := mysql.WithInstance(db.DB, &mysql.Config{})
 
 	if err != nil {
 		log.Fatal("ERR: " + err.Error())
@@ -46,5 +47,5 @@ func NewPgsqlConn() *sqlx.DB {
 		log.Fatal("ERR: " + err.Error())
 	}
 
-	return dbx
+	return db 
 }
