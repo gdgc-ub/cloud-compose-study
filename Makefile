@@ -43,22 +43,22 @@ test:
 
 .PHONY: migrate-up
 migrate-up:
-	migrate -path ./data/db/migrations -database ${DB_URL} up
+	migrate -path ./internal/infra/database/migrations -database ${DB_URL} up
 
 .PHONY: migrate-down
 migrate-down:
-	migrate -path ./data/db/migrations -database ${DB_URL} down 
+	migrate -path ./internal/infra/database/migrations -database ${DB_URL} down 
 
 .PHONY: migrate-force
 migrate-force:
 ifndef version 
 	$(error "Migration version not specified. Use 'make migrate-force version=<version>'")
 endif 
-	migrate -path ./data/db/migrations -database ${DB_URL} force $(version)
+	migrate -path ./internal/infra/database/migrations -database ${DB_URL} force $(version)
 
 .PHONY: migrate-create
 migrate-create:
 ifndef name 
 	$(error "Migration name not specified. Use 'make create-migration name=<name>'")
 endif 
-	migrate create -ext sql -dir ./migrations -seq $(name)
+	migrate create -ext sql -dir ./internal/infra/database/migrations -seq $(name)
