@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/devanfer02/go-blog/infra/database"
-	"github.com/devanfer02/go-blog/infra/server"
+	"github.com/devanfer02/go-blog/internal/infra/database"
+	"github.com/devanfer02/go-blog/internal/infra/server"
 )
 
 func main() {

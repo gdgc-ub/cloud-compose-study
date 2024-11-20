@@ -4,11 +4,11 @@ import { defineConfig } from "vite";
 export default defineConfig({
     build: {
         lib: {
-            entry: [resolve(__dirname, "resources/htmx.js")],
+            entry: [resolve(__dirname, "resources/dev/htmx.js")],
             formats: ["es"],            
             fileName: "htmx",
         },
-        outDir: "static/js",
+        outDir: "resources/static/js",
         emptyOutDir: false
     }
 });

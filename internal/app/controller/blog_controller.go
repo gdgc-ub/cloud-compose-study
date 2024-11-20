@@ -7,12 +7,11 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/devanfer02/go-blog/app/service"
-	"github.com/devanfer02/go-blog/domain"
+	"github.com/devanfer02/go-blog/internal/app/service"
+	"github.com/devanfer02/go-blog/internal/domain"
 	"github.com/devanfer02/go-blog/pkg/constants"
 	"github.com/devanfer02/go-blog/pkg/helpers"
 
-	// "github.com/devanfer02/go-blog/pkg/helpers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -179,14 +178,13 @@ func (c *BlogController) CreateBlog(ctx *gin.Context) {
 
 	if blog.Image != nil {
 		if !helpers.IsImageFile(blog.Image) {
-			return 
+			return
 		}
-	
-		blog.ImageLink = "/static/assets/storage/" + time.Now().Format("02-01-2006") + "-" + blog.Image.Filename 
-	
-		ctx.SaveUploadedFile(blog.Image, "."+blog.ImageLink)
-	}
 
+		blog.ImageLink = "/static/assets/storage/" + time.Now().Format("2006-01-02 15:04:05") + "-" + blog.Image.Filename
+
+		ctx.SaveUploadedFile(blog.Image, "./resources"+blog.ImageLink)
+	}
 
 	err = c.blogSvc.CreateBlog(&blog)
 
@@ -226,14 +224,14 @@ func (c *BlogController) UpdateBlog(ctx *gin.Context) {
 
 	if blog.Image != nil {
 		if !helpers.IsImageFile(blog.Image) {
-			return 
+			return
 		}
-		
-		newImageLink = "/static/assets/storage/" + time.Now().Format("02-01-2006") + "-" + blog.Image.Filename 
-		ctx.SaveUploadedFile(blog.Image, "."+newImageLink)
+
+		newImageLink = "/static/assets/storage/" + time.Now().Format("2006-01-02 15:04:05") + "-" + blog.Image.Filename
+		ctx.SaveUploadedFile(blog.Image, "./resources"+newImageLink)
 
 		if blog.ImageLink != "" {
-			_ = os.Remove("." + blog.ImageLink)
+			_ = os.Remove("./resources" + blog.ImageLink)
 		}
 
 		blog.ImageLink = newImageLink

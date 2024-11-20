@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
 
-	"github.com/devanfer02/go-blog/app/controller"
-	"github.com/devanfer02/go-blog/app/repository"
-	"github.com/devanfer02/go-blog/app/service"
-	"github.com/devanfer02/go-blog/infra/env"
+	"github.com/devanfer02/go-blog/internal/app/controller"
+	"github.com/devanfer02/go-blog/internal/app/repository"
+	"github.com/devanfer02/go-blog/internal/app/service"
+	"github.com/devanfer02/go-blog/internal/infra/env"
 )
 
 type Server interface {
@@ -35,8 +35,8 @@ func NewHTTPServer(dbx *sqlx.DB) Server {
 
 func (h *httpServer) MountMiddlewares() {
 	h.app.SetFuncMap(sprig.FuncMap())
-	h.app.Static("/static", "./static")
-	h.app.LoadHTMLGlob("templates/*")
+	h.app.Static("/static", "./resources/static")
+	h.app.LoadHTMLGlob("resources/views/*")
 }
 
 func (h *httpServer) MountControllers() {

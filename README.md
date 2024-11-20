@@ -19,4 +19,4 @@ As a cloud developer, you must configure the Docker Image to be as small as poss
 
 ## 🛠️ Techstacks
 
-[![My Skills](https://skillicons.dev/icons?i=golang,postgres,docker,htmx,tailwindcss,vite)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=golang,mysql,docker,htmx,tailwindcss,vite)](https://skillicons.dev)

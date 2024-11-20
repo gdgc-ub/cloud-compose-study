@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/devanfer02/go-blog/infra/env"
+	"github.com/devanfer02/go-blog/internal/infra/env"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/jmoiron/sqlx"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/mysql"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
+	"github.com/jmoiron/sqlx"
 )
 
-func NewMySQLConn() *sqlx.DB{
+func NewMySQLConn() *sqlx.DB {
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%s)/%s?parseTime=true",
 		env.AppEnv.DBUser,
@@ -35,8 +35,8 @@ func NewMySQLConn() *sqlx.DB{
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
-		"file://./data/db/migrations",
-		env.AppEnv.DBName, driver, 
+		"file://./internal/infra/database/migrations",
+		env.AppEnv.DBName, driver,
 	)
 
 	if err != nil {
@@ -47,5 +47,5 @@ func NewMySQLConn() *sqlx.DB{
 		log.Fatal("ERR: " + err.Error())
 	}
 
-	return db 
+	return db
 }

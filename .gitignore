@@ -1,8 +1,8 @@
 .env
 node_modules
-static/*
-!static/.gitkeep
-!static/assets/storage/.gitkeep
+resources/static/*
+!resources/static/.gitkeep
+!resources/static/assets/storage/.gitkeep
 .VSCodeCounter
 tmp
 bin

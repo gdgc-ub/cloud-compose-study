@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build && tailwindcss -i ./resources/style.css -o ./static/styles/style.css",
-    "dev": "concurrently \"vite build --watch\" \"tailwindcss -i ./resources/style.css -o ./static/styles/style.css --watch\"",
-    "tailwind:dev": "tailwindcss -i ./resources/style.css -o ./static/styles/style.css --watch",
+    "build": "vite build && tailwindcss -i ./resources/dev/style.css -o ./resources/static/styles/style.css",
+    "dev": "concurrently \"vite build --watch\" \"tailwindcss -i ./resources/dev/style.css -o ./resources/static/styles/style.css --watch\"",
+    "tailwind:dev": "tailwindcss -i ./resources/dev/style.css -o ./resources/static/styles/style.css --watch",
     "vite:dev": "vite build --watch"
   },
   "keywords": [],
